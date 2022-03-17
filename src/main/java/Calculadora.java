@@ -19,13 +19,11 @@ public class Calculadora {
     //La division se compone de funcion operador  multiplicacion la suma
     static final IntBinaryOperator division = (a, b) -> {
 
-        if (b == 0) {
-            throw new IllegalArgumentException("No se puede dividir entre 0");
-        } else {
+
             return IntStream.range(0, Math.abs(a))
                     .reduce((acu, num) -> multiplicacion.applyAsInt(num, b) <= a ? suma.applyAsInt(acu, 1) : acu).getAsInt();
-        }
-        
+
+
     };
 
     public static void main(String[] args) {
@@ -34,7 +32,7 @@ public class Calculadora {
         System.out.println("La suma es " + suma.applyAsInt(2, 3));
         System.out.println("La resta es " + resta.applyAsInt(7, 5));
         System.out.println("La multiplicacion es " + multiplicacion.applyAsInt(2, 4));
-        System.out.println("La division es " + division.applyAsInt(20, 0));
+        System.out.println("La division es " + division.applyAsInt(20, 2));
     }
 }
 
